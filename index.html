@@ -30,11 +30,16 @@
         var eventName = eventSelect.MPEventSelect('value'),
             propName  = propSelect.MPPropertySelect('value'),
             dateRange = dateSelect.MPDatepicker('value');
-
+        
+        var output = {};
+        
         if (eventName) {
-          MP.api.segment(eventName, propName, dateRange).done(function(results) {
-            eventGraph.MPChart('setData', results);
-            eventTable.MPTable('setData', results);
+          MP.api.segment("Free Register", dateRange).done(function(result) {
+            console.log(result)
+            MP.api.segment("Sub Success", dateRange).done(function(results) {
+              eventGraph.MPChart('setData', results);
+              eventTable.MPTable('setData', results);
+            });
           });
         }
       };
