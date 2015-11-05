@@ -27,7 +27,7 @@
         
         if (dateRange) {
           MP.api.segment("Free Register", dateRange).done(function(result) {
-            output = result.values());
+            output = result.values();
             MP.api.segment("Sub Success", dateRange).done(function(results) {
               output.push(results.values());
               eventGraph.MPChart('setData', output);
