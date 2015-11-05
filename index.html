@@ -35,7 +35,7 @@
         
         if (eventName) {
           MP.api.segment("Free Register", dateRange).done(function(result) {
-            console.log(result)
+            console.log(result.values());
             MP.api.segment("Sub Success", dateRange).done(function(results) {
               eventGraph.MPChart('setData', results);
               eventTable.MPTable('setData', results);
