@@ -23,13 +23,13 @@
 
       var runQuery = function() {
         var dateRange = dateSelect.MPDatepicker('value');
-        var output = [];
+        var output = {};
         
         if (dateRange) {
           MP.api.segment("Free Register", dateRange).done(function(result) {
-            output = result.values();
+            output["Free Register"] = result.values()["Free Register"];
             MP.api.segment("Sub Success", dateRange).done(function(results) {
-              output.push(results.values());
+              output["Sub Success"] = result.values()["Sub Success"];
               eventGraph.MPChart('setData', output);
               eventTable.MPTable('setData', output);
             });
