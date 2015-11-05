@@ -23,14 +23,15 @@
 
       var runQuery = function() {
         var dateRange = dateSelect.MPDatepicker('value');
-        var output = {};
+        var output = [];
         
         if (dateRange) {
           MP.api.segment("Free Register", dateRange).done(function(result) {
-            console.log(result.values());
+            output = result.values());
             MP.api.segment("Sub Success", dateRange).done(function(results) {
-              eventGraph.MPChart('setData', results);
-              eventTable.MPTable('setData', results);
+              output.push(results.values());
+              eventGraph.MPChart('setData', output);
+              eventTable.MPTable('setData', output);
             });
           });
         }
