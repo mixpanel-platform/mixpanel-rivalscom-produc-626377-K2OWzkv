@@ -27,12 +27,10 @@
         
         if (dateRange) {
           MP.api.segment("Free Register", dateRange).done(function(result) {
-            
-            
             output["Free Register"] = result.values()["Free Register"];
-            debugger;
             MP.api.segment("Sub Success", dateRange).done(function(results) {
               output["Sub Success"] = result.values()["Sub Success"];
+              debugger;
               eventGraph.MPChart('setData', output);
               eventTable.MPTable('setData', output);
             });
