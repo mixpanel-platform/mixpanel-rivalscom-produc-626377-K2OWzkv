@@ -22,13 +22,10 @@
       });
 
       var runQuery = function() {
-        var eventName = eventSelect.MPEventSelect('value'),
-            propName  = propSelect.MPPropertySelect('value'),
-            dateRange = dateSelect.MPDatepicker('value');
-        
+        var dateRange = dateSelect.MPDatepicker('value');
         var output = {};
         
-        if (eventName) {
+        if (dateRange) {
           MP.api.segment("Free Register", dateRange).done(function(result) {
             console.log(result.values());
             MP.api.segment("Sub Success", dateRange).done(function(results) {
